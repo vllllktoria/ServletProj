@@ -1,8 +1,8 @@
 package com.devcolibri.servlet;
 import java.io.File;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import static java.util.stream.Collectors.toList;
 
 public class DirectoryWorker {
     public List<FileModel> getList(String path) {
@@ -13,6 +13,6 @@ public class DirectoryWorker {
                         file.length(),
                         file.lastModified()
                 ))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 }

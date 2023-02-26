@@ -15,37 +15,36 @@
 <body>
 <%= new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) %>
 <h1> Directory: ${path} </h1>
-    <a style="text-decoration: none;" href="./?path=<%=request.getAttribute("path").toString()%>/..">Up</a>
-    <br>
-    <br>
-    <table>
-        <tr>
-            <th></th>
-            <th>Файл</th>
-            <th>Размер</th>
-            <th>Дата</th>
-        </tr>
-        <%
-            ArrayList<FileModel> list = (ArrayList<FileModel>)request.getAttribute("content");
-            for(FileModel e: list)
-            {
-                if(e.isDirectory()){
-        %>
-        <tr>
-            <td><a style="text-decoration: none;" href="./?path=<%=request.getAttribute("path")%>/<%=e.getName()%>"><%=e.getName()%>/</a></td>
-            <td></td>
-            <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(e.getLastModified())) %></td>
-        </tr>
+<a style="text-decoration: none;" href="./?path=${requestScope.path.substring(0, requestScope.path.lastIndexOf('/'))}">Up</a>
+<br>
+<br>
+<table>
+    <tr>
+        <th>Файл</th>
+        <th>Размер</th>
+        <th>Дата</th>
+    </tr>
+    <%
+        ArrayList<FileModel> list = (ArrayList<FileModel>)request.getAttribute("content");
+        for(FileModel fileModel: list)
+        {
+            if(fileModel.isDirectory()){
+    %>
+    <tr>
+        <td><a style="text-decoration: none;" href="./?path=<%=request.getAttribute("path")%>/<%=fileModel.getName()%>"><%=fileModel.getName()%>/</a></td>
+        <td></td>
+        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(fileModel.getLastModified())) %></td>
+    </tr>
 
-        <%}else{%>
+    <%}else{%>
 
-        <tr>
-            <td><a style="text-decoration: none;" href="http://localhost:8080/download/?path=<%=request.getAttribute("path")%>/<%=e.getName()%>"><%=e.getName()%></a></td>
-            <td><%=e.getLength()%> B</td>
-            <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(e.getLastModified())) %></td>
-        </tr>
-        <%}
-        }%>
-    </table>
+    <tr>
+        <td><a style="text-decoration: none;" href="./download/?path=<%=request.getAttribute("path")%>/<%=fileModel.getName()%>"><%=fileModel.getName()%></a></td>
+        <td><%=fileModel.getLength()%> B</td>
+        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(fileModel.getLastModified())) %></td>
+    </tr>
+    <%}
+    }%>
+</table>
 </body>
 </html>
