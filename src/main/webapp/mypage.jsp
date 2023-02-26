@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.devcolibri.servlet.FileModel" %>
 <!doctype html>
 <html lang="en">
@@ -33,7 +32,7 @@
     <tr>
         <td><a style="text-decoration: none;" href="./?path=<%=request.getAttribute("path")%>/<%=fileModel.getName()%>"><%=fileModel.getName()%>/</a></td>
         <td></td>
-        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(fileModel.getLastModified())) %></td>
+        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, HH:mm:ss z").format(new Date(fileModel.getLastModified())) %></td>
     </tr>
 
     <%}else{%>
@@ -41,7 +40,7 @@
     <tr>
         <td><a style="text-decoration: none;" href="./download/?path=<%=request.getAttribute("path")%>/<%=fileModel.getName()%>"><%=fileModel.getName()%></a></td>
         <td><%=fileModel.getLength()%> B</td>
-        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, hh:mm:ss a").format(new Date(fileModel.getLastModified())) %></td>
+        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, HH:mm:ss z").format(new Date(fileModel.getLastModified())) %></td>
     </tr>
     <%}
     }%>

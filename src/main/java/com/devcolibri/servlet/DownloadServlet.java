@@ -17,13 +17,13 @@ public class DownloadServlet extends HttpServlet {
         File file = new File(path);
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition","attachment;filename=" + file.getName());
-        FileInputStream fileIn = new FileInputStream(file);
+        FileInputStream fileInput = new FileInputStream(file);
         OutputStream out = response.getOutputStream();
         byte[] outputByte = new byte[4096];
-        int length = -1;
-        while((length = fileIn.read(outputByte)) > 0)
+        int length;
+        while((length = fileInput.read(outputByte)) > 0)
             out.write(outputByte, 0, length);
-        fileIn.close();
+        fileInput.close();
         out.flush();
         out.close();
     }
