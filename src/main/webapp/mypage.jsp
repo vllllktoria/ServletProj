@@ -13,7 +13,7 @@
 </head>
 <body>
 <%= new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) %>
-<h1> Directory: ${path} </h1>
+<h1> ${path} </h1>
 <a style="text-decoration: none;" href="./?path=${requestScope.path.substring(0, requestScope.path.lastIndexOf('/'))}">Up</a>
 <br>
 <br>
