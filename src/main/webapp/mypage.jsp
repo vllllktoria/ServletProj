@@ -32,7 +32,7 @@
     <tr>
         <td><a style="text-decoration: none;" href="./?path=<%=request.getAttribute("path")%>/<%=fileModel.getName()%>"><%=fileModel.getName()%>/</a></td>
         <td></td>
-        <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy, HH:mm:ss z").format(new Date(fileModel.getLastModified())) %></td>
+        <td><%= new java.text.SimpleDateFormat("dd.MM.yyyy, HH:mm:ss z").format(new Date(fileModel.getLastModified())) %></td>
     </tr>
 
     <%}else{%>
