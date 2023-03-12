@@ -1,4 +1,5 @@
 package com.devcolibri.servlet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,20 +9,27 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/")
+@WebServlet(urlPatterns = {"/"})
 public class MainServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DirectoryWorker direct = new DirectoryWorker();
-        String path = request.getParameter("path");
-        if (path.equals("")){
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        DirectoryWorker dw = new DirectoryWorker();
+        String path;
+        String uri = req.getQueryString();
+        if (uri != null && uri.contains("path")) {
+            path = req.getParameter("path");
+        } else {
             path = "/";
+        }
+        if (path.matches("[A-Z]:")) {
+            path = File.listRoots()[0].getPath();
         }
         String absolutePath = new File(path).getAbsolutePath();
         List<FileModel> content;
-        content = direct.getList(path);
-        request.setAttribute("content", content);
-        request.setAttribute("path", absolutePath.replace("\\", "/"));
-        request.getRequestDispatcher("mypage.jsp").forward(request, response);
+        content = dw.getList(path);
+
+        req.setAttribute("content", content);
+        req.setAttribute("path", absolutePath.replace("\\", "/"));
+        req.getRequestDispatcher("mypage.jsp").forward(req, resp);
     }
 }

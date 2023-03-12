@@ -1,3 +1,5 @@
 com\devcolibri\servlet\DownloadServlet.class
 com\devcolibri\servlet\DirectoryWorker.class
 com\devcolibri\servlet\FileModel.class
+org\example\Main.class
+com\devcolibri\servlet\MainServlet.class

@@ -12,13 +12,6 @@ public class FileModel {
         this.length = length;
         this.lastModified = lastModified;
     }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public boolean isDirectory() {
         return isDirectory;
@@ -30,6 +23,11 @@ public class FileModel {
 
     public long getLength() {
         return length;
+    }
+
+
+    public String getName() {
+        return name;
     }
 
     public long getLastModified() {
