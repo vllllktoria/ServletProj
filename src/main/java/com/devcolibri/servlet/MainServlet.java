@@ -38,7 +38,7 @@ public class MainServlet extends HttpServlet {
                 response.sendRedirect("http://localhost:8080/login");
             }
             if (!path.contains(user.getLogin())) {
-                path = user.getRootDirectory();
+                path = user.getHomeDirectory();
                 response.sendRedirect("http://localhost:8080/?path=" + path);
             }
             String absolutePath = new File(path).getCanonicalPath();

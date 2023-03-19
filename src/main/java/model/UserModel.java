@@ -20,10 +20,7 @@ public class UserModel {
     }
 
     public String getHomeDirectory() {
-        return homeDirectory;
-    }
 
-    public String getRootDirectory() {
         return homeDirectory;
     }
 }
