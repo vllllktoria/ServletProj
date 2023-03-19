@@ -1,9 +1,7 @@
 package com.devcolibri.servlet;
 
-import model.DirectoryWorker;
 import model.UserModel;
 import service.AccountService;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +24,7 @@ public class RegistrationServlet extends HttpServlet {
         String login = request.getParameter("login");
         String pas = request.getParameter("password");
         UserModel user = new UserModel(login, pas);
+
         if(Objects.equals(act, "registration")){
             if(AccountService.checkUser(user)){
                 request.setAttribute("error", "User already exists.");
@@ -51,7 +50,6 @@ public class RegistrationServlet extends HttpServlet {
             }
         }
     }
-
     private void redirect(UserModel user, HttpServletRequest r, HttpServletResponse re) throws IOException{
         AccountService.setSomeoneLogin(true);
         re.sendRedirect("http://localhost:8080/?path=" + user.getHomeDirectory());

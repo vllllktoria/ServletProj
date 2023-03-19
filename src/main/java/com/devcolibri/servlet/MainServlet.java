@@ -4,7 +4,6 @@ import model.DirectoryWorker;
 import model.FileModel;
 import model.UserModel;
 import service.AccountService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,14 +40,12 @@ public class MainServlet extends HttpServlet {
                 path = user.getHomeDirectory();
                 response.sendRedirect("http://localhost:8080/?path=" + path);
             }
-            String absolutePath = new File(path).getCanonicalPath();
+
+            if (path.matches("[A-Z]:")) {
+                path = File.listRoots()[0].getPath();
+            }
+           // String absolutePath = new File(path).getCanonicalPath();
             List<FileModel> content;
-            if(path.contains("\\..")){
-                path = path.replaceAll("\\..", "");
-            }
-            if(path.contains("/..")){
-                path = path.replaceAll("/..", "");
-            }
             content = dw.getList(path);
 
             if(path == null) {

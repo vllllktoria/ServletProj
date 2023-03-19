@@ -8,19 +8,20 @@ public class UserModel {
     public UserModel(String login, String password) {
         this.login = login;
         this.password = password;
-        this.homeDirectory = "\\" + login;
+        this.homeDirectory = "C:\\\\javaUsers\\\\" + login;
     }
 
     public String getLogin() {
+
         return login;
     }
 
     public String getPassword() {
+
         return password;
     }
 
     public String getHomeDirectory() {
-
         return homeDirectory;
     }
 }

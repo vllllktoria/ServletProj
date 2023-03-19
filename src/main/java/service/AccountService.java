@@ -1,6 +1,6 @@
 package service;
-import model.UserModel;
 
+import model.UserModel;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Objects;
@@ -28,6 +28,7 @@ public class AccountService {
     }
 
     public static void logOut(UserModel user) {
+
         sessions.remove(user);
     }
 
@@ -54,10 +55,10 @@ public class AccountService {
                 return user;
             }
         }
-
         return null;
     }
     public boolean hasActiveSession() {
         return sessions.isEmpty();
     }
+
 }

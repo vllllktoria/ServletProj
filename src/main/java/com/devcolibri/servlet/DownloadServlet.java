@@ -18,7 +18,7 @@ public class DownloadServlet extends HttpServlet {
         if (request.getQueryString().contains("path")){
             path = request.getParameter("path");
         }else{
-            path = "";
+            path = "/";
         }
         path = path.replace('/', '\\');
         File file = new File(path);
