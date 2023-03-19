@@ -1,5 +1,9 @@
-com\devcolibri\servlet\DownloadServlet.class
-com\devcolibri\servlet\DirectoryWorker.class
-com\devcolibri\servlet\FileModel.class
+com\devcolibri\servlet\LogOutServlet.class
+service\AccountService.class
 org\example\Main.class
+model\UserModel.class
 com\devcolibri\servlet\MainServlet.class
+com\devcolibri\servlet\DownloadServlet.class
+com\devcolibri\servlet\RegistrationServlet.class
+model\DirectoryWorker.class
+model\FileModel.class
