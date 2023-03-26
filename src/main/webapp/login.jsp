@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<a href="./login?act=registration">Registration</a>
+<a href="./registration">Registration</a>
 <form method="post">
     <label>
         Login:
@@ -29,4 +29,3 @@
 </form>
 </body>
 </html>
-

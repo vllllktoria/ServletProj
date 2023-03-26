@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <body>
-Have account already? <a href="./login?act=login">Login</a>
+Already registered? <a href="./login">Login</a>
 <form method="post">
   <label>
     Login:
@@ -22,9 +22,11 @@ Have account already? <a href="./login?act=login">Login</a>
   <br>
   <label>
     Email:
-    <input type="email"  name="email">
+    <input type ="email" name = email>
   </label>
+  <br>
   <input type="submit" value="reg">
+
 </form>
 <br>
 <br>

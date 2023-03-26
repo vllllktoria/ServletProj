@@ -8,12 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DirectoryWorker {
-
-    //public static String root = "C:\\\\javaUsers";
     public List<FileModel> getList(String path) {
-        //if (!path.contains(root)){
-         //   path = root + path;
-       // }
         File userFile = new File(path);
         if(!userFile.exists()){
             userFile.mkdir();
