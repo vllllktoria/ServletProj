@@ -1,9 +1,11 @@
 com\devcolibri\servlet\LogOutServlet.class
 service\AccountService.class
+com\devcolibri\servlet\LogInServlet.class
 org\example\Main.class
 model\UserModel.class
 com\devcolibri\servlet\MainServlet.class
 com\devcolibri\servlet\DownloadServlet.class
 com\devcolibri\servlet\RegistrationServlet.class
+db\DBHandler.class
 model\DirectoryWorker.class
 model\FileModel.class
