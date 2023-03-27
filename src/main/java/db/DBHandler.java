@@ -1,7 +1,6 @@
 package db;
 
 import model.UserModel;
-
 import java.sql.*;
 import java.util.*;
 import java.sql.DriverManager;
@@ -15,7 +14,7 @@ public class DBHandler {
         try {
             Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
             DriverManager.registerDriver(driver);
-            this.connection =DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(url, user, password);
         } catch (Exception ex){
             ex.printStackTrace();
         }
