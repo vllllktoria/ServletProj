@@ -9,13 +9,13 @@ public class UserModel {
     public UserModel(String login, String password) {
         this.login = login;
         this.password = password;
-        homeDirectory = "C:/" + login;
+        homeDirectory = "C:/javaUsers/" + login;
     }
     public UserModel(String login, String password, String email) {
         this.login = login;
         this.password = password;
         this.email = email;
-        homeDirectory = "C:/" + login;
+        homeDirectory = "C:/javaUsers/" + login;
     }
 
     public String getLogin() {
