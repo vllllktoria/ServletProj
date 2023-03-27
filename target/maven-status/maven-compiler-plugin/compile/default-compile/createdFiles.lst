@@ -1,5 +1,6 @@
 com\devcolibri\servlet\LogOutServlet.class
 service\AccountService.class
+com\devcolibri\servlet\LogInServlet.class
 org\example\Main.class
 model\UserModel.class
 com\devcolibri\servlet\MainServlet.class

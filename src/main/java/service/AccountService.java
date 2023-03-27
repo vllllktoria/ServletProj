@@ -14,13 +14,6 @@ public class AccountService {
         logins.put(user.getLogin(), user);
     }
 
-    public UserModel getUserByLogin(String login) {
-        return logins.get(login);
-    }
-
-    public HttpSession getUserBySession(UserModel session) {
-        return sessions.get(session);
-    }
     public void addSession(UserModel user, HttpSession session){
         if (!sessions.containsKey(user))
             sessions.put(user, session);
