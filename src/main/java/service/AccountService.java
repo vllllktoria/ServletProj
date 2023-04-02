@@ -1,5 +1,6 @@
 package service;
 
+import db.DBHandler;
 import model.UserModel;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -7,20 +8,21 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AccountService {
-    private static Map<String, UserModel> logins = new HashMap<>();
+    //private static Map<String, UserModel> logins = new HashMap<>();
     private static Map<UserModel, HttpSession> sessions = new HashMap<>();
+    DBHandler db = new DBHandler();
 
     public void addUser(UserModel user){
-        logins.put(user.getLogin(), user);
+        db.addUser(user);
     }
 
-    public UserModel getUserByLogin(String login) {
+    /*public UserModel getUserByLogin(String login) {
         return logins.get(login);
-    }
+    }*/
 
-    public HttpSession getUserBySession(UserModel session) {
-        return sessions.get(session);
-    }
+//    public HttpSession getUserBySession(UserModel session) {
+//        return sessions.get(session);
+//    }
     public void addSession(UserModel user, HttpSession session){
         if (!sessions.containsKey(user))
             sessions.put(user, session);
@@ -31,10 +33,13 @@ public class AccountService {
     }
 
     public boolean checkUser(String login, String password){
-        UserModel user = logins.get(login);
-        return user != null && user.getPassword().equals(password);
+        for (UserModel user : db.getAllUsers()) {
+            if (user.getLogin().equals(login)) {
+                return user.getPassword().equals(password);
+            }
+        }
+        return false;
     }
-
 
     public UserModel getBySession(String sessionId){
         for (UserModel user : sessions.keySet()) {
@@ -42,7 +47,6 @@ public class AccountService {
                 return user;
             }
         }
-
         return null;
     }
 
