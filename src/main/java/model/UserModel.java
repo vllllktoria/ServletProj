@@ -1,10 +1,20 @@
 package model;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "usersTable")
 public class UserModel {
-    private final String login;
-    private final String password;
-    private  String email;
-    private final String homeDirectory;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column(name = "login")
+    private String login;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "homeDirectory")
+    private String homeDirectory;
 
     public UserModel(String login, String password) {
         this.login = login;
@@ -16,6 +26,12 @@ public class UserModel {
         this.password = password;
         this.email = email;
         homeDirectory = "C:/javaUsers/" + login;
+    }
+
+    public UserModel() {
+    }
+    public long getId() {
+        return id;
     }
 
     public String getLogin() {
@@ -32,6 +48,26 @@ public class UserModel {
 
     public String getHomeDirectory() {
         return homeDirectory;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setHomeDirectory(String homeDirectory) {
+        this.homeDirectory = homeDirectory;
     }
 }
 
