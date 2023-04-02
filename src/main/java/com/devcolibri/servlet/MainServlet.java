@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/"})
@@ -31,13 +30,14 @@ public class MainServlet extends HttpServlet {
         if (accountService.hasActiveSession() || accountService.getBySession(req.getSession().getId()) == null) {
             resp.sendRedirect("http://localhost:8080/login");
         }
+
         if (!path.contains(user.getLogin()) || path.contains("/..")) {
             path = user.getHomeDirectory();
             resp.sendRedirect("http://localhost:8080/?path=" + path);
         }
-        if (path.matches("[A-Z]:")) {
+        /*if (path.matches("[A-Z]:")) {
             path = File.listRoots()[0].getPath();
-        }
+        }*/
         String absolutePath = new File(path).getAbsolutePath();
         List<FileModel> content;
         content = dw.getList(path);
