@@ -3,7 +3,6 @@ package db;
 import model.UserModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import java.util.Collections;
 import java.util.List;
 
